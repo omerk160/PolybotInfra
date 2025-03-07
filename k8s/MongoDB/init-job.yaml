@@ -33,3 +33,4 @@ spec:
               '
               echo "Replica set initialization completed."
       restartPolicy: OnFailure
+#
