@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: Yolo5-service
+  name: yolo5-service
 spec:
   selector:
-    app: Yolo5
+    app: yolo5
   ports:
     - name: http-port
       port: 5000

@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: Yolo5
+  name: yolo5
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: Yolo5
+      app: yolo5
   template:
     metadata:
       labels:
-        app: Yolo5
+        app: yolo5
     spec:
       imagePullSecrets:
         - name: regcred
       containers:
-        - name: Yolo5
+        - name: yolo5
           image: omerk160/yolo5:1.0.59
           ports:
             - containerPort: 5000
