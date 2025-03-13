@@ -21,7 +21,7 @@ spec:
       volumes:
         - name: polybot-certs
           secret:
-            secretName: polybot-tls
+            secretName: polybot-secrets
       containers:
         - name: polybot
           image: omerk160/polybot:1.0.100
