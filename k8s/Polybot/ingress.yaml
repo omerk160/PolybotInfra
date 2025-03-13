@@ -35,4 +35,4 @@ spec:
   tls:
     - hosts:
         - omer-polybot-lb.devops-int-college.com
-      secretName: polybot-secrets
+      secretName: polybot-tls
