@@ -6,7 +6,7 @@ kind: Secret
 metadata:
   creationTimestamp: "2025-03-07T11:37:07Z"
   name: polybot-tls
-  namespace: ingress-nginx
+  namespace: default
   resourceVersion: "126823"
   uid: a0065410-42e4-44a4-88e1-ad6a8571cf52
 type: kubernetes.io/tls
