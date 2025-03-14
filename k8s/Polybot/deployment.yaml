@@ -27,10 +27,6 @@ spec:
           image: guymeltzer/polybot:1.0.111
           ports:
             - containerPort: 31804  # Keeping this as 30219 (app-level port)
-          volumeMounts:
-            - name: polybot-certs
-              mountPath: "/app/certs"
-              readOnly: true
           env:
             - name: TELEGRAM_TOKEN
               valueFrom:
