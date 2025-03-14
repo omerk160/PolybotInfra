@@ -1,17 +1,29 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: polybot-service
-  namespace: default
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"app.kubernetes.io/instance":"polybot-app"},"name":"polybot-service","namespace":"default"},"spec":{"clusterIP":"10.97.15.96","clusterIPs":["10.97.15.96"],"externalTrafficPolicy":"Cluster","internalTrafficPolicy":"Cluster","ipFamilies":["IPv4"],"ipFamilyPolicy":"SingleStack","ports":[{"name":"https-port","nodePort":31804,"port":31804,"protocol":"TCP","targetPort":31804}],"selector":{"app":"polybot"},"sessionAffinity":"None","type":"NodePort"}}
   labels:
     app.kubernetes.io/instance: polybot-app
+  name: polybot-service
+  namespace: default
 spec:
+  clusterIP: 10.97.15.96
+  clusterIPs:
+    - 10.97.15.96
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
   ports:
-    - name: https-port  # Changed to http-port since Flask uses HTTP
-      port: 31804  # Service port exposed to Ingress
+    - name: https-port
+      nodePort: 31804
+      port: 31804
       protocol: TCP
-      targetPort: 31804  # Matches containerPort in deployment
-      nodePort: 31804  # Matches ALB target group port
+      targetPort: 31804
   selector:
     app: polybot
+  sessionAffinity: None
   type: NodePort
