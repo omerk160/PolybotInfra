@@ -24,7 +24,7 @@ spec:
             secretName: polybot-tls
       containers:
         - name: polybot
-          image: guymeltzer/polybot:1.0.111
+          image: omerk160/polybot:1.0.101
           ports:
             - containerPort: 31804  # App listens on 30219
           env:
