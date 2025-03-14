@@ -6,11 +6,10 @@ metadata:
   labels:
     app.kubernetes.io/instance: polybot-app
   annotations:
-    # Optional NGINX-specific annotations (customize as needed)
-    nginx.ingress.kubernetes.io/rewrite-target: /  # Rewrites the URL if needed
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"  # Enforces HTTPS
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
 spec:
-  ingressClassName: nginx  # Matches the NGINX Ingress Controller
+  ingressClassName: nginx
   rules:
     - host: omer-polybot-lb.devops-int-college.com
       http:
@@ -21,15 +20,15 @@ spec:
               service:
                 name: polybot-service
                 port:
-                  number: 30619  # Matches your new port
+                  number: 31804  # Aligned with service and deployment
           - path: /health
             pathType: Prefix
             backend:
               service:
                 name: polybot-service
                 port:
-                  number: 30619
+                  number: 31804  # Aligned with service and deployment
   tls:
     - hosts:
         - omer-polybot-lb.devops-int-college.com
-      secretName: polybot-tls  # Ensure this secret exists
+      secretName: polybot-tls

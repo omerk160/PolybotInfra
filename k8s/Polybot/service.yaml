@@ -1,29 +1,17 @@
 apiVersion: v1
 kind: Service
 metadata:
-  annotations:
-    kubectl.kubernetes.io/last-applied-configuration: |
-      {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"app.kubernetes.io/instance":"polybot-app"},"name":"polybot-service","namespace":"default"},"spec":{"clusterIP":"10.97.15.96","clusterIPs":["10.97.15.96"],"externalTrafficPolicy":"Cluster","internalTrafficPolicy":"Cluster","ipFamilies":["IPv4"],"ipFamilyPolicy":"SingleStack","ports":[{"name":"https-port","nodePort":30619,"port":30619,"protocol":"TCP","targetPort":30619}],"selector":{"app":"polybot"},"sessionAffinity":"None","type":"NodePort"}}
-  labels:
-    app.kubernetes.io/instance: polybot-app
   name: polybot-service
   namespace: default
+  labels:
+    app.kubernetes.io/instance: polybot-app
 spec:
-  clusterIP: 10.97.15.96
-  clusterIPs:
-    - 10.97.15.96
-  externalTrafficPolicy: Cluster
-  internalTrafficPolicy: Cluster
-  ipFamilies:
-    - IPv4
-  ipFamilyPolicy: SingleStack
   ports:
     - name: https-port
-      nodePort: 30219
-      port: 30219
+      port: 31804  # Service port exposed to Ingress
       protocol: TCP
-      targetPort: 30219
+      targetPort: 31804  # Matches containerPort in deployment
+      nodePort: 31804  # For NodePort type, must be in range 30000-32767
   selector:
     app: polybot
-  sessionAffinity: None
   type: NodePort
