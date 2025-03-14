@@ -18,7 +18,7 @@ spec:
           effect: "NoSchedule"
       containers:
         - name: polybot
-          image: omerk160/polybot:1.0.102
+          image: omerk160/polybot:1.0.103
           ports:
             - containerPort: 31804  # App listens on 30219
           env:
