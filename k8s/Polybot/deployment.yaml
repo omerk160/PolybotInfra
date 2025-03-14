@@ -31,50 +31,50 @@ spec:
             - name: TELEGRAM_TOKEN
               valueFrom:
                 secretKeyRef:
-                  name: polybot-secrets
+                  name: omer-polybot-secrets
                   key: TELEGRAM_TOKEN
             - name: S3_BUCKET_NAME
               valueFrom:
                 secretKeyRef:
-                  name: polybot-secrets
+                  name: omer-polybot-secrets
                   key: S3_BUCKET_NAME
             - name: SQS_QUEUE_URL
               valueFrom:
                 secretKeyRef:
-                  name: polybot-secrets
+                  name: omer-polybot-secrets
                   key: SQS_QUEUE_URL
             - name: TELEGRAM_APP_URL
               valueFrom:
                 secretKeyRef:
-                  name: polybot-secrets
+                  name: omer-polybot-secrets
                   key: TELEGRAM_APP_URL
             - name: AWS_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
-                  name: polybot-secrets
+                  name: omer-polybot-secrets
                   key: AWS_ACCESS_KEY_ID
             - name: AWS_SECRET_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
-                  name: polybot-secrets
+                  name: omer-polybot-secrets
                   key: AWS_SECRET_ACCESS_KEY
             - name: MONGO_COLLECTION
               valueFrom:
                 secretKeyRef:
-                  name: polybot-secrets
+                  name: omer-polybot-secrets
                   key: MONGO_COLLECTION
             - name: MONGO_DB
               valueFrom:
                 secretKeyRef:
-                  name: polybot-secrets
+                  name: omer-polybot-secrets
                   key: MONGO_DB
             - name: MONGO_URI
               valueFrom:
                 secretKeyRef:
-                  name: polybot-secrets
+                  name: omer-polybot-secrets
                   key: MONGO_URI
             - name: POLYBOT_URL
               valueFrom:
                 secretKeyRef:
-                  name: polybot-secrets
+                  name: omer-polybot-secrets
                   key: POLYBOT_URL
