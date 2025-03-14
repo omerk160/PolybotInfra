@@ -19,10 +19,10 @@ spec:
   ipFamilyPolicy: SingleStack
   ports:
     - name: https-port
-      nodePort: 30619
-      port: 30619
+      nodePort: 30219
+      port: 30219
       protocol: TCP
-      targetPort: 30619
+      targetPort: 30219
   selector:
     app: polybot
   sessionAffinity: None
