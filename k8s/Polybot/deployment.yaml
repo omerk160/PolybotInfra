@@ -26,17 +26,59 @@ spec:
         - name: polybot
           image: guymeltzer/polybot:1.0.111
           ports:
-            - containerPort: 31804  # Keeping this as 30219 (app-level port)
+            - containerPort: 31804  # App listens on 30219
+          volumeMounts:
+            - name: polybot-certs
+              mountPath: "/app/certs"
+              readOnly: true
           env:
             - name: TELEGRAM_TOKEN
               valueFrom:
                 secretKeyRef:
-                  name: omer-polybot-secrets
+                  name: polybot-secrets
                   key: TELEGRAM_TOKEN
-            - name: MONGO_URI
-              value: "mongodb://mongodb-0.mongodb.mongodb.svc.cluster.local:27017,mongodb-1.mongodb.mongodb.svc.cluster.local:27017,mongodb-2.mongodb.mongodb.svc.cluster.local:27017/?replicaSet=rs0"
+            - name: S3_BUCKET_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: polybot-secrets
+                  key: S3_BUCKET_NAME
+            - name: SQS_QUEUE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: polybot-secrets
+                  key: SQS_QUEUE_URL
             - name: TELEGRAM_APP_URL
               valueFrom:
                 secretKeyRef:
-                  name: telegram-app-url-secret
+                  name: polybot-secrets
                   key: TELEGRAM_APP_URL
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: polybot-secrets
+                  key: AWS_ACCESS_KEY_ID
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: polybot-secrets
+                  key: AWS_SECRET_ACCESS_KEY
+            - name: MONGO_COLLECTION
+              valueFrom:
+                secretKeyRef:
+                  name: polybot-secrets
+                  key: MONGO_COLLECTION
+            - name: MONGO_DB
+              valueFrom:
+                secretKeyRef:
+                  name: polybot-secrets
+                  key: MONGO_DB
+            - name: MONGO_URI
+              valueFrom:
+                secretKeyRef:
+                  name: polybot-secrets
+                  key: MONGO_URI
+            - name: POLYBOT_URL
+              valueFrom:
+                secretKeyRef:
+                  name: polybot-secrets
+                  key: POLYBOT_URL
