@@ -11,7 +11,7 @@ spec:
       port: 31804  # Service port exposed to Ingress
       protocol: TCP
       targetPort: 31804  # Matches containerPort in deployment
-      nodePort: 31804  # For NodePort type, must be in range 30000-32767
+      nodePort: 31805  # For NodePort type, must be in range 30000-32767
   selector:
     app: polybot
   type: NodePort
