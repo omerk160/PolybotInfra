@@ -20,7 +20,7 @@ spec:
         - name: polybot
           image: omerk160/polybot:1.0.103
           ports:
-            - containerPort: 31804  # App listens on 30219
+            - containerPort: 31805
           env:
             - name: TELEGRAM_TOKEN
               valueFrom:

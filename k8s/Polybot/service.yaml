@@ -10,7 +10,7 @@ spec:
     - name: http-port  # Changed to http-port since Flask uses HTTP
       port: 31804  # Service port exposed to Ingress
       protocol: TCP
-      targetPort: 31804  # Matches containerPort in deployment
+      targetPort: 31805  # Matches containerPort in deployment
       nodePort: 31804  # Matches ALB target group port
   selector:
     app: polybot
