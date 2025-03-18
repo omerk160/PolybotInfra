@@ -2,12 +2,6 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: polybot-ingress
-  namespace: default
-  labels:
-    app.kubernetes.io/instance: polybot-app
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"  # ALB handles TLS
 spec:
   ingressClassName: nginx
   rules:
@@ -20,11 +14,4 @@ spec:
               service:
                 name: polybot-service
                 port:
-                  number: 31804  # Matches service and deployment
-          - path: /health
-            pathType: Prefix
-            backend:
-              service:
-                name: polybot-service
-                port:
-                  number: 31804  # Matches service and deployment
+                  number: 80

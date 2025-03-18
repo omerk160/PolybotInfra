@@ -8,9 +8,9 @@ metadata:
 spec:
   ports:
     - name: https-port
-      port: 31804  # Adjust to 443 if app uses HTTPS
+      port: 80  # Adjust to 443 if app uses HTTPS
       protocol: TCP
-      targetPort: 31804  # Match containerPort from Deployment
+      targetPort: 31804 # Match containerPort from Deployment
   selector:
     app: polybot
   type: ClusterIP  # Changed from NodePort since Ingress is used
