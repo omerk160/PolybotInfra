@@ -2,15 +2,10 @@ apiVersion: v1
 kind: Service
 metadata:
   name: polybot-service
-  namespace: default
-  labels:
-    app.kubernetes.io/instance: polybot-app
 spec:
-  ports:
-    - name: https-port
-      port: 443  # Adjust to 443 if app uses HTTPS
-      protocol: TCP
-      targetPort: 31804 # Match containerPort from Deployment
   selector:
     app: polybot
-  type: ClusterIP  # Changed from NodePort since Ingress is used
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 31804
