@@ -19,7 +19,7 @@ spec:
   ipFamilyPolicy: SingleStack
   ports:
     - name: https-port
-      nodePort: 31804
+      #nodePort: 31804
       port: 31804
       protocol: TCP
       targetPort: 31804
