@@ -1,9 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: yolo5
+  name: yolo5-deployment
+  namespace: default
+  labels:
+    app: yolo5
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: yolo5
@@ -12,46 +15,14 @@ spec:
       labels:
         app: yolo5
     spec:
-      #imagePullSecrets:
-      #  - name: regcred
       containers:
         - name: yolo5
-          image: omerk160/yolo5:1.0.60
-          ports:
-            - containerPort: 5000
-          resources:
-            requests:
-              cpu: "100m"
-              memory: "128Mi"
-            limits:
-              cpu: "200m"
-              memory: "256Mi"
+          image: omerk160/yolo5:v1.0.60
           env:
             - name: S3_BUCKET_NAME
-              valueFrom:
-                secretKeyRef:
-                  name: polybot-secrets
-                  key: S3_BUCKET_NAME
+              value: omer-polybot-bucket
             - name: SQS_QUEUE_URL
               valueFrom:
                 secretKeyRef:
-                  name: polybot-secrets
+                  name: omer-polybot-secrets
                   key: SQS_QUEUE_URL
-            - name: MONGO_URI
-              valueFrom:
-                secretKeyRef:
-                  name: polybot-secrets
-                  key: MONGO_URI
-            - name: MONGO_DB
-              valueFrom:
-                secretKeyRef:
-                  name: polybot-secrets
-                  key: MONGO_DB
-            - name: MONGO_COLLECTION
-              valueFrom:
-                secretKeyRef:
-                  name: polybot-secrets
-                  key: MONGO_COLLECTION
-            - name: POLYBOT_URL
-              value: "http://polybot-service:30619/results"
-            # AWS Secrets Manager will be used in the application code for AWS credentials
