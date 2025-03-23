@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: yolo5
-          image: omerk160/yolo5:1.0.61
+          image: omerk160/yolo5:1.0.62
           env:
             - name: S3_BUCKET_NAME
               value: omer-polybot-bucket
