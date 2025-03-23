@@ -5,6 +5,12 @@ metadata:
   namespace: default
   labels:
     app: yolo5
+
+tolerations:
+  - key: "node.kubernetes.io/disk-pressure"
+    operator: "Exists"
+    effect: "NoSchedule"
+
 spec:
   replicas: 1
   selector:
