@@ -12,13 +12,9 @@ spec:
       labels:
         app: polybot
     spec:
-      tolerations:
-        - key: "node-role.kubernetes.io/control-plane"
-          operator: "Exists"
-          effect: "NoSchedule"
       containers:
         - name: polybot
-          image: omerk160/polybot:1.0.110
+          image: omerk160/polybot:1.0.111
           ports:
             - containerPort: 31804
           env:
